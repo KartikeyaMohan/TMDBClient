@@ -1,0 +1,32 @@
+package com.kmx.tmdbclient.data.api
+
+import com.kmx.tmdbclient.data.models.artistObjects.ArtistList
+import com.kmx.tmdbclient.data.models.movieObjects.MovieList
+import com.kmx.tmdbclient.data.models.tvShowObjects.TVShowList
+import retrofit2.Response
+import retrofit2.http.GET
+import retrofit2.http.Query
+
+interface TMDBService {
+
+    @GET("movie/popular")
+    suspend fun getPopularMovies(
+        @Query(
+            "api_key"
+            ) apiKey: String
+        ): Response<MovieList>
+
+    @GET("tv/popular")
+    suspend fun getPopularTvShows(
+        @Query(
+            "api_key"
+            ) apiKey: String
+        ): Response<TVShowList>
+
+    @GET("person/popular")
+    suspend fun getPopularArtists(
+        @Query(
+            "api_key"
+            ) apiKey: String
+        ): Response<ArtistList>
+}
